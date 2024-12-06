@@ -1,34 +1,72 @@
 <section>
-<div class="container">
-    <div class="brand-logo"></div>
-    <div class="brand-title">Angular</div>
-    <div class="inputs">
-      <label>EMAIL</label>
-      <input type="email" placeholder="example@test.com" />
-      <label>PASSWORD</label>
-      <input type="password" placeholder="Min 6 charaters long" />
-      <button type="submit">Registrate</button>
-    </div>
+    <div class="container">
+        <div class="brand-logo"></div>
+        <div class="brand-title">Angular</div>
+        <div class="inputs">
+          <label>EMAIL</label>
+          <input type="email" placeholder="example@test.com" [(ngModel)]="newClient.email" />
+          <label>PASSWORD</label>
+          <input type="password" placeholder="Min 6 characters long" [(ngModel)]="newClient.contra" />
+          <button type="submit" (click)="addClient()">Registrate</button>
+        </div>
  
   </div>
 </section>
-
 <h2>Responsive Table</h2>
 <div class="table-wrapper">
-    <table class="fl-table">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Correo</th>
-            <th>Contraseña</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>Content 1</td>
-            <td>Content 1</td>
-            <td>Content 1</td>
-        </tr>    
-        <tbody>
-    </table>
+  <table class="fl-table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Correo</th>
+        <th>Contraseña</th>
+        <th>Eliminar</th>
+        <th>Editar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let client of clients">
+        <td>{{ client.id }}</td>
+        <td>{{ client.email }}</td>
+        <td>{{ client.contra }}</td>
+        <td> <p-button label="Eliminar" (click)="deleteClient(client.id)" severity="danger" /></td>
+        <td>
+            <p-button 
+              label="Editar" 
+              (click)="startEdit(client.id, client.email, client.contra)" 
+              severity="info">
+            </p-button>
+          </td>
+                </tr>
+    </tbody>
+  </table>
 </div>
+<div *ngIf="editingClientId">
+    <h3>Editar Cliente</h3>
+    <label for="email">Email:</label>
+    <input 
+      id="email" 
+      type="email" 
+      [(ngModel)]="editingClient.email" 
+      placeholder="Nuevo correo" />
+  
+    <label for="contra">Contraseña:</label>
+    <input 
+      id="contra" 
+      type="password" 
+      [(ngModel)]="editingClient.contra" 
+      placeholder="Nueva contraseña" />
+  
+    <p-button 
+      label="Guardar cambios" 
+      (click)="editClient(editingClientId)" 
+      severity="success">
+    </p-button>
+  
+    <p-button 
+      label="Cancelar" 
+      (click)="cancelEdit()" 
+      severity="danger">
+    </p-button>
+  </div>
+  

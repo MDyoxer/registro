@@ -32,8 +32,9 @@ section {
 .brand-logo {
   height: 100px;
   width: 100px;
-  background: url("https://th.bing.com/th/id/R.639e3b0355a42430576f839817f2528e?rik=SG8sGuN4p1GaAg&riu=http%3a%2f%2fupload.wikimedia.org%2fwikipedia%2fcommons%2fthumb%2fc%2fcf%2fAngular_full_color_logo.svg%2f250px-Angular_full_color_logo.svg.png&ehk=CtjnVaRGmD9%2fq92BSWmb%2bYMD3XgAGjSCe5MgEQXJNjw%3d&risl=&pid=ImgRaw&r=0");
-  margin: auto;
+  background: url("https://cdn-images-1.medium.com/fit/c/72/72/1*nbJ41jD1-r2Oe6FsLjKaOg.png");
+  margin: 0 auto;
+  background-repeat: no-repeat;
   border-radius: 50%;
   box-sizing: border-box;
   box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px white;
